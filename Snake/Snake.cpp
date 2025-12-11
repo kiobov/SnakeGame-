@@ -12,6 +12,7 @@ int tailX[100], tailY[100];
 int nTail;
 
 
+
 void Setup() {
 	
 	Gameover = false;
@@ -23,10 +24,20 @@ void Setup() {
 
 }
 
+void Menu() {
+	system("cls");
+	cout << "===================== \n";
+	cout << "WELCOME TO SNAKE GAME \n";
+	cout << "===================== \n";
+
+	cout << "Press on any key to start game.";
+}
+
 void Draw() {
 	
 	system("cls");
-	cout << "******WELCOME TO SNAKE GAME****** \n";
+	
+	
 	for (int i = 0; i < width+2; i++) 
 		cout << "#";
 	cout << endl;
@@ -131,8 +142,15 @@ void Logic() {
 
 }
 
+
 int main() {
+	Menu();
+	
+	_getch();
+
+
 	Setup();
+	Menu();
 	while (!Gameover) {
 		
 		Draw();
