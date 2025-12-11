@@ -8,6 +8,8 @@ int x, y,  fruitX, fruitY, score ;
 enum eDirection {STOP=0, LEFT, RIGHT, UP, DOWN};
 eDirection dir;
 bool Gameover ;
+int tailX[100], tailY[100];
+int nTail;
 
 
 void Setup() {
@@ -75,6 +77,19 @@ void Input() {
 
 }
 void Logic() {
+	int prevX = tailX[0];
+	int prevY = tailY[0];
+	int prev2X, prev2Y;
+	tailX[0] = x;
+	tailY[0] = y;
+	for (int i = 1; i < nTail; i++) {
+		 prev2X = tailX[i];
+		 prev2Y = tailY[i];
+		tailX[i] = prevX;
+		tailY[i] = prevY;
+		prevX = prev2X;
+		prevY = prev2Y;
+	}
 	switch (dir) {
 	case LEFT: x--;  break;
 	case RIGHT: x++;  break;
@@ -91,6 +106,7 @@ void Logic() {
 		//randomly put fruit in map
 		fruitX = rand() % width;
 		fruitY = rand() % height;
+		nTail++;
 	}
 
 }
