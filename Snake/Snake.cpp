@@ -26,7 +26,7 @@ void Setup() {
 void Draw() {
 	
 	system("cls");
-	cout << "*********WELCOME TO SNAKE GAME********* \n";
+	cout << "******WELCOME TO SNAKE GAME****** \n";
 	for (int i = 0; i < width+2; i++) 
 		cout << "#";
 	cout << endl;
@@ -41,8 +41,19 @@ void Draw() {
 				cout << "O";
 			else if (i == fruitY && j == fruitX)
 				cout << "f";
-			else
-				cout<<" ";
+			else {
+				//add the body size when we eat 
+				bool print = false;
+				for (int k = 0; k < nTail; k++) {
+					if (tailX[k] == j && tailY[k] == i)
+					{
+						cout << "o";
+						print = true;
+					}
+				}
+				if (!print)
+					cout << " ";
+			}
 			if ( j ==width - 1)
 				cout << "#";
 		}
@@ -98,8 +109,17 @@ void Logic() {
 	default: break;
 	}
 	//game over when you hit the walls
-	if (x > width || x < 0||y>height||y<0)
-		Gameover = true;
+	//if (x > width || x < 0||y>height||y<0)
+	//	Gameover = true;
+	//hit wall come from other end 
+	if (x > width) x = 0; else if (x < 0)x = width - 1;
+	if (y > height) y = 0; else if (y < 0)y = height - 1;
+	//terminate when it eat  body
+	for (int i = 0; i < nTail; i++)
+		if (tailX[i] == x && tailY[i] == y)
+			Gameover = true;
+
+
 	//increase score 
 	if (x == fruitX && y == fruitY) {
 		score  += 10;
