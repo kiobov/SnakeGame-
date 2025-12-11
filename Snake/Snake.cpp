@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include <windows.h>
 using namespace std;
 const int width = 20;
 const int  height = 20;
@@ -40,7 +41,7 @@ void Menu() {
 void Pausegame() {
 
 	cout << "Game Paused\n";
-	cout << "Enter \"R or r\ Resume.....\n ";
+	cout << "Enter \"R or r\" Resume.....\n ";
 	while (true) {
 
 		if (_kbhit()) {
@@ -51,6 +52,16 @@ void Pausegame() {
 		}
 	}
 
+}
+
+void SetColor(int color) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void ClearScreen()
+{
+	COORD topLeft = { 0, 0 };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), topLeft);
 }
 
 void Draw() {
@@ -68,17 +79,21 @@ void Draw() {
 		{
 			if ( j == 0)
 				cout << "#";
-			if (i == y && j == x)
-				cout << "O";
-			else if (i == fruitY && j == fruitX)
-				cout << "f";
+			if (i == y && j == x) {
+				SetColor(10); cout << "O"; SetColor(7);
+			}
+			else if (i == fruitY && j == fruitX) {
+				SetColor(12); cout << "f"; SetColor(7);
+			}
 			else {
 				//add the body size when we eat 
 				bool print = false;
 				for (int k = 0; k < nTail; k++) {
 					if (tailX[k] == j && tailY[k] == i)
 					{
+						SetColor(10);
 						cout << "o";
+						SetColor(7);
 						print = true;
 					}
 				}
