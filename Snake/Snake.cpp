@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <conio.h>
 using namespace std;
 const int width = 20;
 const int  height = 20;
@@ -50,6 +51,17 @@ void Draw() {
 
 }
 void Input() {
+
+	//get character from keyboard 
+	if (_kbhit()) {
+		switch (_getch()) {
+		case 'a':
+		dir:LEFT; break;
+		case 'a':
+		dir:LEFT; break;
+
+		}
+	}
 
 }
 void Logic() {
