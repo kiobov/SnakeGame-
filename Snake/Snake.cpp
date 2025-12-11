@@ -11,6 +11,7 @@ bool Gameover ;
 
 
 void Setup() {
+	
 	Gameover = false;
 	dir = STOP;
 	x = width / 2;
@@ -21,7 +22,9 @@ void Setup() {
 }
 
 void Draw() {
+	
 	system("cls");
+	cout << "*********WELCOME TO SNAKE GAME********* \n";
 	for (int i = 0; i < width+2; i++) 
 		cout << "#";
 	cout << endl;
@@ -48,6 +51,7 @@ void Draw() {
 		cout << "#";
 	cout << endl;
 	
+	cout << "Score: "<<score;
 
 }
 void Input() {
@@ -56,15 +60,38 @@ void Input() {
 	if (_kbhit()) {
 		switch (_getch()) {
 		case 'a':
-		dir:LEFT; break;
-		case 'a':
-		dir:LEFT; break;
+		dir=LEFT; break;
+		case 'd':
+		dir=RIGHT; break;
 
+		case'w':
+		dir=UP; break;
+		case 's':
+		dir=DOWN; break;
+		case 'x':
+			Gameover = true; break;
 		}
 	}
 
 }
 void Logic() {
+	switch (dir) {
+	case LEFT: x--;  break;
+	case RIGHT: x++;  break;
+	case UP: y--;  break;
+	case DOWN: y++;  break;
+	default: break;
+	}
+	//game over when you hit the walls
+	if (x > width || x < 0||y>height||y<0)
+		Gameover = true;
+	//increase score 
+	if (x == fruitX && y == fruitY) {
+		score  += 10;
+		//randomly put fruit in map
+		fruitX = rand() % width;
+		fruitY = rand() % height;
+	}
 
 }
 
@@ -73,11 +100,8 @@ int main() {
 	while (!Gameover) {
 		
 		Draw();
-
+		Input();
+		Logic();
 	}
-	
-
 	return 0;
-
-
 }
