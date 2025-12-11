@@ -28,9 +28,29 @@ void Menu() {
 	system("cls");
 	cout << "===================== \n";
 	cout << "WELCOME TO SNAKE GAME \n";
-	cout << "===================== \n";
+	cout << "===================== \n\n\n";
 
-	cout << "Press on any key to start game.";
+	cout << "Enter \"S\" to start game.\n";
+	cout << "Enter \"Q\" to quit game.\n";
+	cout << "Enter \"P\" to pause.\n";
+
+	cout << "Enter key Option\n";
+
+}
+void Pausegame() {
+
+	cout << "Game Paused\n";
+	cout << "Enter \"R or r\ Resume.....\n ";
+	while (true) {
+
+		if (_kbhit()) {
+			char key = _getch();
+			if ("r" || "R") {
+				break;
+			}
+		}
+	}
+
 }
 
 void Draw() {
@@ -92,6 +112,11 @@ void Input() {
 		dir=UP; break;
 		case 's':
 		dir=DOWN; break;
+
+		case 'P':
+		case 'p':
+			Pausegame(); break;
+
 		case 'x':
 			Gameover = true; break;
 		}
@@ -145,17 +170,21 @@ void Logic() {
 
 int main() {
 	Menu();
+	char Choice;
+
+	cin >> Choice;
+	if (Choice == 'Q'||Choice == 'q')
+		return 0;
 	
-	_getch();
+	if (Choice == 'S'||Choice =='s') {
+		Setup();
+		Menu();
+		while (!Gameover) {
 
-
-	Setup();
-	Menu();
-	while (!Gameover) {
-		
-		Draw();
-		Input();
-		Logic();
+			Draw();
+			Input();
+			Logic();
+		}
+		return 0;
 	}
-	return 0;
 }
