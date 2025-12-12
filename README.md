@@ -5,8 +5,9 @@ The game demonstrates real-time input handling, collision detection, tail-follow
 
 📸 
 ![Alt text for the image](Snake/Images/menu.png)
+Menu page 
 ![Alt text for the image](Snake/Images/console.png)
-
+Console page 
  # Introduction
 This project is a terminal/command-line Snake Game implemented in C++.
 It was built to demonstrate:
