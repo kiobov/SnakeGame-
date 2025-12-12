@@ -103,8 +103,11 @@ Debug → Start Without Debugging
 # Project Structure
 Snake/
 │
+
 ├── Snake.cpp        # Main game file
+
 ├── README.md        # Project documentation
+
 └── Images/        screenshots
 
 ### Known Issues
