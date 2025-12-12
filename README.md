@@ -31,7 +31,7 @@ Rendering	SetConsoleCursorPosition()
 
 # System Architecture
 Below is a visual architecture diagram showing how the game components interact.
-![Alt text for the image](Snake/Images/console.Architecture)
+![Alt text for the image](Snake/Images/console.Architecture.png)
 
 # Installation & Running
 1. Clone the repository
