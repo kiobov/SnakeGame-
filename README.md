@@ -4,8 +4,8 @@ A simple but fully functional console-based Snake Game built using C++.
 The game demonstrates real-time input handling, collision detection, tail-following logic, procedural programming, and efficient console rendering using Windows API cursor manipulation.
 
 📸 
-![Alt text for the image](Snakegame/Snake/Images/menu.png)
-![Alt text for the image](Snakegame/Snake/Images/console.png)
+![Alt text for the image](Snake/Images/menu.png)
+![Alt text for the image](Snake/Images/console.png)
 
  # Introduction
 This project is a terminal/command-line Snake Game implemented in C++.
