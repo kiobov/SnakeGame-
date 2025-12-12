@@ -4,9 +4,10 @@ A simple but fully functional console-based Snake Game built using C++.
 The game demonstrates real-time input handling, collision detection, tail-following logic, procedural programming, and efficient console rendering using Windows API cursor manipulation.
 
 📸 
-![Alt text for the image](Snakegame/Snake/Images/menu.png)
-![Alt text for the image](Snakegame/Snake/Images/console.png)
-
+![Alt text for the image](Snake/Images/menu.png)
+Menu page 
+![Alt text for the image](Snake/Images/console.png)
+Console page 
  # Introduction
 This project is a terminal/command-line Snake Game implemented in C++.
 It was built to demonstrate:
@@ -33,51 +34,97 @@ Below is a visual architecture diagram showing how the game components interact.
 ┌──────────────────────────────────────────────────────────┐
 │                     Snake Game System                     │
 └──────────────────────────────────────────────────────────┘
+
                │
+               
                ▼
+               
 ┌──────────────────────────────────────────────────────────┐
+
 │                    Game Entry Point                      │
+
 │                       main.cpp                           │
+
 │ - Initializes game                                       │
+
 │ - Starts the main game loop                              │
+
 │ - Calls update + render functions                        │
+
 └──────────────────────────────────────────────────────────┘
+
                │
+               
                ▼
+               
 ┌──────────────────────────────────────────────────────────┐
+
 │                     Game Manager                         │
+
 │                    (Game Engine)                         │
+
 │ - Handles game state                                     │
+
 │ - Reads user input (W/A/S/D)                             │
+
 │ - Updates snake position                                 │
+
 │ - Checks collisions (walls, self)                        │
+
 │ - Places food & updates score                            │
+
 └──────────────────────────────────────────────────────────┘
+
         │                           │
+        
         │                           │
+        
         ▼                           ▼
+        
 ┌──────────────────────┐    ┌────────────────────────┐
+
 │     Snake Module      │    │     Food Module        │
+
 │  - Snake body list    │    │ - Random food spawn    │
+
 │  - Movement logic     │    │ - Detect eaten by snake│
+
 │  - Growth handling    │    └────────────────────────┘
+
 └──────────────────────┘
+
         │
+        
         ▼
+        
 ┌──────────────────────────────────────────────────────────┐
+
 │                    Rendering System                       │
+
 │              Console Rendering Utilities                  │
+
 │ - Draw snake, food, walls                                 │
+
 │ - Clear / redraw frame                                    │
+
 │ - Uses Windows API (SetConsoleCursorPosition, etc.)       │
+
 └──────────────────────────────────────────────────────────┘
+
         │
+        
         ▼
+        
 ┌──────────────────────────────────────────────────────────┐
+
 │                 Input Handling Layer                      │
+
 │ - Non-blocking keyboard read (GetAsyncKeyState)           │
+
 │ - Directions mapped to game actions                       │
+
 └────────────────────────────────────────────────────────────────┘
+
 
 # Installation & Running
 1. Clone the repository
@@ -102,8 +149,11 @@ Debug → Start Without Debugging
 # Project Structure
 Snake/
 │
+
 ├── Snake.cpp        # Main game file
+
 ├── README.md        # Project documentation
+
 └── Images/        screenshots
 
 ### Known Issues
