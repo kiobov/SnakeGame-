@@ -46,13 +46,16 @@ void Pausegame() {
 
 		if (_kbhit()) {
 			char key = _getch();
-			if ("r" || "R") {
+			if (key=='r'|| key=='R') {
 				break;
 			}
 		}
 	}
 
 }
+
+
+
 
 void SetColor(int color) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -64,9 +67,18 @@ void ClearScreen()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), topLeft);
 }
 
+void GameOverScreen() {
+	ClearScreen();
+	cout << "=============================\n";
+	cout << "         GAME OVER           \n";
+	cout << "=============================\n";
+	cout << "Your Score: " << score << "\n\n";
+	cout << "Press R to Restart or Q to Quit\n";
+}
+
 void Draw() {
 	
-	system("cls");
+	ClearScreen();
 	
 	
 	for (int i = 0; i < width+2; i++) 
@@ -163,8 +175,8 @@ void Logic() {
 	//if (x > width || x < 0||y>height||y<0)
 	//	Gameover = true;
 	//hit wall come from other end 
-	if (x > width) x = 0; else if (x < 0)x = width - 1;
-	if (y > height) y = 0; else if (y < 0)y = height - 1;
+	if (x >= width) x = 0; else if (x < 0)x = width - 1;
+	if (y >= height) y = 0; else if (y < 0)y = height - 1;
 	//terminate when it eat  body
 	for (int i = 0; i < nTail; i++)
 		if (tailX[i] == x && tailY[i] == y)
@@ -199,7 +211,9 @@ int main() {
 			Draw();
 			Input();
 			Logic();
+			Sleep(20);
 		}
+		
 		return 0;
-	}
+	}GameOverScreen();
 }
